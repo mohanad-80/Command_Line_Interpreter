@@ -6,7 +6,6 @@ import java.util.List;
 
 public class CommandParser {
   public Command parse(String input) {
-    // System.out.println(input);
     if (input == null || input.isEmpty()) {
       return null;
     }
@@ -25,15 +24,10 @@ public class CommandParser {
       } else if (segment.contains(">")) {
         redirectionSegments = segment.split(">", 2);
       }
-      // for (String seg : redirectionSegments) {
-      //   System.out.println(seg);
-      // }
-      // System.out.println(append);
 
       String commandPart = redirectionSegments[0].trim();
       List<String> parts = new ArrayList<>(Arrays.asList(commandPart.split("\\s+")));
       String commandName = parts.get(0);
-      // System.out.println(commandName);
       List<String> arguments;
 
       // Safely handle arguments extraction
@@ -42,9 +36,6 @@ public class CommandParser {
       } else {
         arguments = new ArrayList<>();
       }
-      // for (String arg : arguments) {
-      //   System.out.println(arg);
-      // }
 
       Command command = new Command(commandName, arguments);
 
@@ -62,11 +53,6 @@ public class CommandParser {
 
       previousCommand = command;
     }
-
-    // System.out.println(previousCommand.getName());
-    // System.out.println(previousCommand.getArguments());
-    // System.out.println(previousCommand.getOutputFile());
-    // System.out.println(previousCommand.getNextCommand());
 
     // Return the first command in the pipeline
     return previousCommand;

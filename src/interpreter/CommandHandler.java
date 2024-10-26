@@ -13,8 +13,6 @@ public class CommandHandler {
   }
 
   public void execute(Command command) {
-    // System.out.println(command.getName());
-    // System.out.println(command.getArguments());
     while (command != null) {
       String output = null;
 
@@ -30,7 +28,6 @@ public class CommandHandler {
           new ExitCommand().execute(command);
           return;
         case "help":
-          // output = new HelpCommand().execute(command);
           break;
         default:
           System.out.println("Unknown command: " + command.getName());
