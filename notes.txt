@@ -1,0 +1,15 @@
+1. Explain the file structure
+2. Explain how everyone's work should be submitted on github
+3. Divide the work on the team
+
+Mohanad: cd, ls, ls -a, ls -r, exit
+Ehab: help, pwd, cat
+Omar: mkdir, rmdir, touch
+Amer: mv, rm
+
+
+1. create branch
+2. commit you work on your branch
+3. publish your branch
+4. open PR (explain what you did in the PR disc)
+5. someone from the team will review and merge the PR
