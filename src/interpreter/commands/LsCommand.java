@@ -27,10 +27,10 @@ public class LsCommand {
 
     // Check if the path exists and is a directory
     if (!currentDir.exists()) {
-      return "Error: Directory does not exist.";
+      return "Error: Directory does not exist: " + currentDir.getPath();
     }
     if (!currentDir.isDirectory()) {
-      return "Error: Not a directory.";
+      return "Error: Not a directory: " + currentDir.getPath();
     }
 
     String[] files = currentDir.list();
