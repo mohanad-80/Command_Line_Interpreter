@@ -29,6 +29,9 @@ public class CommandHandler {
           return;
         case "help":
           break;
+        case "pwd":
+          output = new PwdCommand().execute(command, context);
+          break;
         default:
           System.out.println("Unknown command: " + command.getName());
       }
