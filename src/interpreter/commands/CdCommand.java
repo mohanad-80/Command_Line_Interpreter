@@ -31,7 +31,7 @@ public class CdCommand {
       return "Error: Unable to resolve path.";
     }
 
-    // Check if the path exists and is a directory
+    // Check if the path exists and is a directory and has access
     if (!dir.exists()) {
       return "Error: No such directory: " + dir.getPath();
     }

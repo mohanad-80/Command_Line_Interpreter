@@ -14,6 +14,7 @@ public class LsCommand {
     StringBuilder output = new StringBuilder();
     List<String> arguments = command.getArguments();
 
+    // check the flags and directory path in the arguments
     for (String arg : arguments) {
       if (arg.equals("-a")) {
         showAll = true;
@@ -24,6 +25,7 @@ public class LsCommand {
       }
     }
 
+    // Check if the path exists and is a directory
     if (!currentDir.exists()) {
       return "Error: Directory does not exist.";
     }
@@ -40,9 +42,10 @@ public class LsCommand {
       return "Directory is empty.";
     }
 
+    // if -r flag is found loop in reverse
     if (reverseOrder) {
       for (int i = files.length - 1; i >= 0; i--) {
-        // skip hidden files
+        // skip hidden files if -a is not found
         if (!showAll && files[i].startsWith(".")) {
           continue;
         }
