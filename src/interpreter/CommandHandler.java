@@ -25,7 +25,7 @@ public class CommandHandler {
           output = new LsCommand().execute(command, context);
           break;
         case "exit":
-          new ExitCommand().execute(command);
+          new ExitCommand().execute();
           return;
         case "help":
           break;
