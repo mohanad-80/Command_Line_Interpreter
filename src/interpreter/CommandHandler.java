@@ -39,7 +39,7 @@ public class CommandHandler {
       // Handle redirection to a file
       if (command.getOutputFile() != null) {
         try (FileWriter writer = new FileWriter(command.getOutputFile(), command.isAppend())) {
-          writer.write(output);
+          writer.write(output + '\n');
         } catch (IOException e) {
           System.out.println("Error writing to file: " + e.getMessage());
         }
