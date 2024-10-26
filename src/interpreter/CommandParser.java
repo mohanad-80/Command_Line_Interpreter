@@ -11,6 +11,8 @@ public class CommandParser {
     }
     // Split by pipe operator first for command chaining
     String[] pipeSegments = input.split("\\|");
+    Command firstCommand = null;
+    Command currentCommand = null;
     Command previousCommand = null;
 
     for (String segment : pipeSegments) {
@@ -37,24 +39,28 @@ public class CommandParser {
         arguments = new ArrayList<>();
       }
 
-      Command command = new Command(commandName, arguments);
+      currentCommand = new Command(commandName, arguments);
 
       // Handle redirection if present
       if (redirectionSegments.length > 1) {
         // Remove any leading `>` symbols
         String outputFile = redirectionSegments[1].replaceAll("^>+", "").trim();
-        command.setOutputFile(outputFile, append);
+        currentCommand.setOutputFile(outputFile, append);
       }
 
       // Link the previous command for piping
       if (previousCommand != null) {
-        previousCommand.setNextCommand(command);
+        previousCommand.setNextCommand(currentCommand);
       }
 
-      previousCommand = command;
+      if (firstCommand == null) {
+        firstCommand = currentCommand;
+      }
+
+      previousCommand = currentCommand;
     }
 
     // Return the first command in the pipeline
-    return previousCommand;
+    return firstCommand;
   }
 }
