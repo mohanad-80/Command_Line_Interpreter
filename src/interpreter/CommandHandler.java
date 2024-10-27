@@ -29,6 +29,7 @@ public class CommandHandler {
           new ExitCommand().execute();
           return;
         case "help":
+          output = new HelpCommand().execute();
           break;
         case "pwd":
           output = new PwdCommand().execute(command, context);
