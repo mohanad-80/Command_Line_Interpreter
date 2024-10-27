@@ -4,6 +4,7 @@ import interpreter.commands.*;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class CommandHandler {
   private final InterpreterContext context; // Use context for state management
@@ -25,7 +26,7 @@ public class CommandHandler {
           output = new LsCommand().execute(command, context);
           break;
         case "exit":
-          new ExitCommand().execute(command);
+          new ExitCommand().execute();
           return;
         case "help":
           break;
@@ -45,7 +46,8 @@ public class CommandHandler {
         }
       } else if (command.getNextCommand() != null) {
         // Pass output to next command in case of piping
-        command.getNextCommand().getArguments().add(output);
+        String[] outputArgs = output.trim().split("\\s+");
+        command.getNextCommand().getArguments().addAll(Arrays.asList(outputArgs));
       } else {
         System.out.println(output);
       }
